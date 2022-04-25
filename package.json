@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "moment": "^2.29.3",
+    "request": "^2.88.2"
+  },
+  "scripts": {
+    "dev": "node raila.js"
+  }
+}
