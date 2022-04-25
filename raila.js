@@ -4,7 +4,6 @@
 const request = require("request");
 const moment = require("moment");
 const fs = require("fs");
-const current = moment();
 
 require("dotenv").config()
 const env = process.env;
@@ -34,7 +33,7 @@ let config = {};
 const search = () => {
   config = readJson();
 
-  console.log(config);
+  // console.log(config);
   const sendData = [];
 
   for(const record of config.records){
@@ -67,7 +66,7 @@ const search = () => {
       }
     }
   }
-  console.log("beforeData:", beforeData);
+  // console.log("beforeData:", beforeData);
 
   beforeData.push(...sendData);
   return [...sendData];
@@ -149,6 +148,7 @@ const getMsg = (seguFlg, s) => {
 }
 setInterval(async () => {
   // 10分おきに取得して通知
+  const current = moment();
 
   if (current.format("HH") >= 7 && current.format("HH") < 9) {
     await fetchJson();
@@ -160,8 +160,9 @@ setInterval(async () => {
         await post(sendData);
       }
     }
+  } else {
+    beforeData = [];
   }
-
 
 }, (1000 * 10));
 
