@@ -149,6 +149,7 @@ const getMsg = (seguFlg, s) => {
 setInterval(async () => {
   // 10分おきに取得して通知
   const current = moment();
+  console.log("NOW: ", current.format("HH:mm:ss"));
 
   if (current.format("HH") >= 7 && current.format("HH") < 9) {
     await fetchJson();
